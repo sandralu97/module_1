@@ -1,0 +1,78 @@
+---
+title: "Simple document"
+author: Sandra Lu
+date: September 2020
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+I'm an R Markdown document! 
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+# Section 3
+## Data frame and plot
+
+Below chunk creates a data frame and generate a plot
+code_chunk = alt+ctrl+i
+eval = FALSE -> do not execute code
+echo = False -> do not show code, only results
+message = FALSE --> only output, turn off code chunk & messages
+include = FALSE -> everything off
+collapse = TRUE -> show everything in one chunk
+```{r plot_example, message=FALSE}
+library(tidyverse)
+
+plot_df = tibble(
+  x = rnorm(500,mean = 2,sd=4),
+  y = 3-4.2*x + rnorm(500)
+)
+
+ggplot(plot_df, aes(x = x, y = y)) + geom_point()
+```
+
+The data frame has `r nrow(plot_df)` rows.
+
+Here is a list
+--------------
+* List 1
+* List 2
+  *List 2.1
+* List 4
+
+Lists
+------------------------------------------------------------
+
+*   Bulleted list item 1
+
+*   Item 2
+
+    * Item 2a
+
+    * Item 2b
+
+1.  Numbered list item 1
+
+1.  Item 2. The numbers are incremented automatically in the output.
+
+#### Table
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
